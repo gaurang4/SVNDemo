@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    IBOutlet UITextField *txtUrl;
+    
+    MPMoviePlayerController *player;
+}
 
+- (IBAction)btnPlayAction:(id)sender;
 
 @end
 

@@ -24,4 +24,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnPlayAction:(id)sender {
+    
+    NSURL *url   = [NSURL URLWithString:txtUrl.text];
+    player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+    
+    player.controlStyle   = MPMovieControlStyleDefault;
+    player.shouldAutoplay = YES;
+    [self.view addSubview:player.view];
+    [player setFullscreen:YES animated:YES];
+}
+
+
+- (void)moviePlayBackDidFinish{
+    [self dismissViewControllerAnimated:player.view completion:NULL];
+}
+
+
 @end
